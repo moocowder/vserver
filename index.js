@@ -36,26 +36,24 @@ const MOUNT_PATH =
 const UPLOAD_DIR = path.join(MOUNT_PATH, "uploads")
 const CHUNKS_DIR = path.join(UPLOAD_DIR, "chunks")
 const TEMP_DIR = path.join(CHUNKS_DIR, "temp")
-const FINAL_DIR = path
-  .join(UPLOAD_DIR, "final")
+const FINAL_DIR = path.join(UPLOAD_DIR, "final")
 
-  [
-    // Create directories with error handling
-    (UPLOAD_DIR, CHUNKS_DIR, TEMP_DIR, FINAL_DIR)
-  ].forEach((dir) => {
-    try {
-      if (!fs.existsSync(dir)) {
-        fs.mkdirSync(dir, { recursive: true })
-        console.log(`Created directory: ${dir}`)
-      }
-    } catch (error) {
-      console.error(`Failed to create directory ${dir}:`, error)
-      // For Railway, this might indicate volume mounting issues
-      if (process.env.RAILWAY_ENVIRONMENT) {
-        console.error("Railway volume might not be properly mounted")
-      }
+// Create directories with error handling
+const directories = [UPLOAD_DIR, CHUNKS_DIR, TEMP_DIR, FINAL_DIR]
+directories.forEach((dir) => {
+  try {
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true })
+      console.log(`Created directory: ${dir}`)
     }
-  })
+  } catch (error) {
+    console.error(`Failed to create directory ${dir}:`, error)
+    // For Railway, this might indicate volume mounting issues
+    if (process.env.RAILWAY_ENVIRONMENT) {
+      console.error("Railway volume might not be properly mounted")
+    }
+  }
+})
 
 // Configure multer for file uploads - store temporarily first
 const upload = multer({
