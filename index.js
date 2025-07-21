@@ -24,6 +24,7 @@ const corsOptions = {
     // You can also add your custom Railway domain here
     "https://vserver.up.railway.app",
     "https://vserver-production-029d.up.railway.app",
+    "https://hosteelapp.vercel.app",
   ].filter(Boolean), // Remove undefined values
   credentials: true,
   optionsSuccessStatus: 200,
