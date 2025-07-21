@@ -22,7 +22,7 @@ const corsOptions = {
     // Railway provides RAILWAY_STATIC_URL for your deployed domain
     process.env.RAILWAY_STATIC_URL,
     // You can also add your custom Railway domain here
-    // "https://your-app-name.railway.app",
+    "https://vserver.up.railway.app",
   ].filter(Boolean), // Remove undefined values
   credentials: true,
   optionsSuccessStatus: 200,
