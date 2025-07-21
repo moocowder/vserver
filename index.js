@@ -23,6 +23,7 @@ const corsOptions = {
     process.env.RAILWAY_STATIC_URL,
     // You can also add your custom Railway domain here
     "https://vserver.up.railway.app",
+    "https://vserver-production-029d.up.railway.app",
   ].filter(Boolean), // Remove undefined values
   credentials: true,
   optionsSuccessStatus: 200,
